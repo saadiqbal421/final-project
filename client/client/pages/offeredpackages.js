@@ -1,7 +1,20 @@
 import { Card, Badge } from 'antd'
+import axios from "axios";
 import Link from 'next/link'
 const { Meta } = Card;
 
+const packages = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get('/api/createnewpackage');
+      setCourses(data);
+      setLoading(false);
+    }
+    catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
+  };
 const packagescard = ({ createnewpackage }) => {
   const {   
     place ,
