@@ -1,13 +1,11 @@
 import React from 'react';
 import Image from "next/image";
-import Footer from '../components/footer';
-import { Box, Link, Stack, Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import heroImg from '../public/images/frontimg.jpeg';
-import lunges from '../public/images/lunges.png';
-import yoga from '../public/images/yoga-pose.png';
-import extended from '../public/images/extended.png';
+import safe from '../public/images/safe.png';
+import download from '../public/images/download.jpg';
+import worldwide from '../public/images/worldwide.jpg';
 import trainingImg from '../public/images/ddimg.jpeg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -28,7 +26,7 @@ const Index = () => {
             <h2
               
               className='section_title'
-              data-aos='fade-up'
+              data-aos='fade-right'
               data-aos-duration='1500'
             >
               Live the <span className='highlights'>Tour</span>{' '}
@@ -89,7 +87,7 @@ const Index = () => {
             data-aos-duration='1500'
           >
             <span className='exercise_icon'>
-              <Image src={lunges} alt='' />
+              <Image src={safe} alt='' />
             </span>
 
             <div className='exercise_content'>
@@ -108,7 +106,7 @@ const Index = () => {
             data-aos-duration='1500'
           >
             <span className='exercise_icon'>
-              <Image src={yoga} alt='' />
+              <Image src={download} alt='' />
             </span>
 
             <div className='exercise_content'>
@@ -126,7 +124,7 @@ const Index = () => {
             data-aos-duration='1500'
           >
             <span className='exercise_icon'>
-              <Image src={extended} alt='' />
+              <Image src={worldwide} alt='' />
             </span>
 
             <div className='exercise_content'>

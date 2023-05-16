@@ -84,8 +84,8 @@ const Login = () => {
                 </div>
                 <p>
                   Forgot Password?{``}
-                  <Link className="link-style" href="/forgot-password">
-                    Forgot Password
+                  <Link className="link-style" href="/register">
+                    Sign up with new mail
                   </Link>
                 </p>
               </form>

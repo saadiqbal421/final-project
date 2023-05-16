@@ -54,8 +54,11 @@ const TopNav = () => {
    <Menu mode="horizontal" selectedKeys={[current]} className="Header">
   <div className="container">
     <div className="nav_wrapper">
-      <div className="logo">
-        <a href="/" className="navbar-brand"><span>Travel Ease</span> </a>
+    <div className="logo">
+        <a href="/" className="navbar-brand">
+          <img src="/images/logo.png" alt="Logo" className="logo-image" />
+          <span>Travel Ease</span>
+        </a>
       </div>
       <div className="navigation">
         <ul className="menu">
@@ -76,16 +79,6 @@ const TopNav = () => {
               }}>Enlist Agency</a>
             </li>
           )}
-          {/* {user && user.role && user.role.includes("Instructor") && (
-            <li className="nav__item">
-              <a href="/instructor" className="weight">Instructor</a>
-            </li>
-          )}
-          {user !== null && (
-            <li className="nav__item">
-              <a href="/user" className="weight">Dashboard</a>
-            </li>
-          )} */}
         <></>
               </ul>
             </div>

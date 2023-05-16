@@ -11,7 +11,6 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     
     <Provider>
-      {/* <link rel="shortcut icon" href="/favicon.ico" /> */}
       <ToastContainer position="top-center" />
       <TopNav />
       <Component {...pageProps} />

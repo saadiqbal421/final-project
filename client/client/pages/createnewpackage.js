@@ -64,7 +64,18 @@ const Form = () => {
   };
 
   const handlePlaceChange = (e) => {
-    setValues({ ...values, place: e.target.value });
+    const inputValue = e.target.value;
+    const pattern = /^[a-zA-Z\s]*$/; // Regular expression pattern for alphabets and spaces only
+  
+    if (pattern.test(inputValue)) {
+      setValues({ ...values, place: inputValue });
+       // Clear the error message when the input is correct
+    }
+ 
+  else 
+  {
+    toast.error(errorMessage);
+  }
   };
 
   const handleDaysChange = (e) => {
@@ -84,6 +95,8 @@ const Form = () => {
     setPreview(URL.createObjectURL(e.target.files[0]));
     setUploadButtonText(e.target.files[0].name);
   };
+  
+
     return (
     <form className="form" onSubmit={handleSubmit}>
       <div>

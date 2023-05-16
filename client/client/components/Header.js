@@ -8,6 +8,7 @@ const Header = () => {
             <div className="navbar_brand">
             <Link href="/">
                     <Image src="/images/logo.png" alt="my logo image" width={300} height={150}/>
+                    
             </Link>
             <TopNav />
             </div>
