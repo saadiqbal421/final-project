@@ -8,11 +8,11 @@ const packagesSchema = new Schema({
     required: true
   },
   days: {
-    type: String,
+    type: Number,
     required: true
   },
   price: {
-    type: String,
+    type: Number,
     required: true
   },
   description: {

@@ -257,8 +257,8 @@ const createnewpackage = async (req, res) => {
     const { place="Swat",
        days="2",
         price="15000",
-         description="Swat in summer is popular for hiking, trekking, camping, ziplining, chairlift/cable car riding, general holiday making, and honeymoon trips. In winter sports activities in swat make it the most famous and enjoyable tour destination in Pakistan.",
-          image="" } = req.body;
+         description="Swat is beautiful city",
+          image="some url" } = req.body;
 
     // Create a new instance of the Form model
     const newForm = new Form({

@@ -998,8 +998,8 @@ body {
 }
 
 .logo-image {
-  height: 60px; /* Adjust the height as needed */
-  margin-right: 10px; /* Add spacing between the logo and text */
+  height: 90px; /* Adjust the height as needed */
+  margin-right: 0px; /* Add spacing between the logo and text */
 }
 
 .logo span {
