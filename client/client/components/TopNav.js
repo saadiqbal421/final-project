@@ -60,7 +60,7 @@ const TopNav = () => {
       <div className="navigation">
         <ul className="menu">
           <li className="nav__item">
-            <a href="http://localhost:3000" className="weight">Shop</a>
+            <a href="http://localhost:3001" className="weight">Shop</a>
           </li>
           {user !== null && (
             <li className="nav__item">

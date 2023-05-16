@@ -3,6 +3,8 @@ const express = require("express");
 const router = express.Router();
 const { requireSignin } = require("../middlewares/index");
 const { User } = require('../models/user');
+const { Form } = require('../models/packages');
+
 const {
   register,
   login,
@@ -11,7 +13,7 @@ const {
   forgotPassword,
   resetPassword,
   verifyEmail,
-  // createnewpackage,
+  createnewpackage,
 } = require("../controllers/auth");
 
 router.get('/VerifyEmail/:emailVerificationToken', async (req, res) => {
@@ -38,6 +40,6 @@ router.get("/logout", logout);
 router.get("/current-user", requireSignin, currentUser);
 router.post("/forgot-password", forgotPassword);
 router.post("/reset-password", resetPassword);
-// router.post("/createnewpackage", createnewpackage);
+router.post("/createnewpackage", createnewpackage);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const { User } = require("../models/user");
 const { hashPassword, comparePassword } = require("../utils/auth");
 const jwt = require("jsonwebtoken");
-
+const  Form  = require('../models/packages');
 const { nanoid } = require("nanoid");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
@@ -251,32 +251,36 @@ const resetPassword = async (req, res) => {
   }
 };
 
-// const createnewpackage = async (req, res) => {
-//   try {
-//     const { place,
-//       days,
-//       price,
-//       description,
-//       image, } = req.body;
+const createnewpackage = async (req, res) => {
+  try {
+    // Extract the form data from the request body
+    const { place="Swat",
+       days="2",
+        price="15000",
+         description="ewe",
+          image="some url" } = req.body;
 
-//       const newUser = new User({
-//         place,
-//         days,
-//         price,
-//         description,
-//         image
-//       });
-  
-//       // Save the new user to the database
-//       const savedUser = await newUser.save();
-  
-//       // Send the saved user as the response
-//       res.json(savedUser);
-//     } catch (err) {
-//       return res.status(400).send("Error. Please try again");
-//   } 
-  
-// };
+    // Create a new instance of the Form model
+    const newForm = new Form({
+      place ,
+      days,
+      price,
+      description,
+      image,
+    });
+
+    // Save the form data to the database
+    await newForm.save();
+
+    // Return a success response
+    return res.status(200).json({ message: 'Form submitted successfully!' });
+  } catch (error) {
+    // Handle any errors that occur during form submission
+    console.error(error);
+    return res.status(500).json({ error: 'An error occurred while submitting the form.' });
+  }
+};
+
 module.exports = {
   register,
   login,
@@ -285,5 +289,5 @@ module.exports = {
   forgotPassword,
   resetPassword,
   verifyEmail,
-  // createnewpackage,
+  createnewpackage,
 };

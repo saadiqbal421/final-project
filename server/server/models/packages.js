@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const {ObjectId} = Schema;
 // Define the form schema
-const formSchema = new mongoose.Schema({
+const packagesSchema = new Schema({
   place: {
     type: String,
     required: true
@@ -26,6 +26,6 @@ const formSchema = new mongoose.Schema({
 });
 
 // Create a model based on the form schema
-const FormModel = mongoose.model('Form', formSchema);
+const Form = mongoose.model('Form', packagesSchema);
 
-module.exports = FormModel;
+module.exports = Form;

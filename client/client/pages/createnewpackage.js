@@ -6,22 +6,20 @@ import { Context } from "../context";
 import { useRouter } from "next/router";
 
 const Form = () => {
-    const [values, setValues] = useState({
-        place: "",
-        days: "",
-        price: "9.99",
-        description: "",
-        image: "",
-        loading: false,
-      });
- 
+  const [values, setValues] = useState({
+    place: "",
+    days: "",
+    price: "",
+    description: "",
+    image: "",
+    loading: false,
+  });
+
   const { state, dispatch } = useContext(Context);
 
   const [image, setImage] = useState({});
   const [preview, setPreview] = useState("");
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
-
-
 
   const { pack } = state;
   const router = useRouter();
@@ -30,20 +28,21 @@ const Form = () => {
       router.push("/createnewpackage");
     }
   }, [pack]);
-  
-  
+
+  const { place, days, price, description } = values;
   const handleSubmit = async (event) => {
     event.preventDefault();
   
     try {
-      setLoading(true);
-      const { data } = await axios.post(`/api/Submit`, {
-        place,
-        days,
-        price,
-        description,
-        image,
-      });
+      setValues({ ...values, loading: true });
+      const formData = new FormData();
+      formData.append("place", place);
+      formData.append("days", days);
+      formData.append("price", price);
+      formData.append("description", description);
+      formData.append("image", image);
+  
+      const { data } = await axios.post(`/api/createnewpackage`, formData);
       toast.success("Submitted");
   
       console.log("Submit response", { data });
@@ -53,15 +52,37 @@ const Form = () => {
         payload: data,
       });
   
-      window.localStorage.setItem("packages", JSON.stringify(data));
+      window.localStorage.setItem("createnewpackage", JSON.stringify(data));
   
       // router.push("/user");
     } catch (err) {
-      toast.error(`Error saving data`,err.response.data);
-      setLoading(false);
+      const errorMessage = err.response
+        ? err.response.data
+        : "Error saving data";
+      toast.error(errorMessage);
     }
-  
-  
+  };
+
+  const handlePlaceChange = (e) => {
+    setValues({ ...values, place: e.target.value });
+  };
+
+  const handleDaysChange = (e) => {
+    setValues({ ...values, days: e.target.value });
+  };
+
+  const handlePriceChange = (e) => {
+    setValues({ ...values, price: e.target.value });
+  };
+
+  const handleDescriptionChange = (e) => {
+    setValues({ ...values, description: e.target.value });
+  };
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+    setPreview(URL.createObjectURL(e.target.files[0]));
+    setUploadButtonText(e.target.files[0].name);
   };
     return (
     <form className="form" onSubmit={handleSubmit}>
@@ -71,7 +92,7 @@ const Form = () => {
           type="text"
           id="place"
           name="place"
-          onChange={(e) => place(e.target.value)}
+          onChange={handlePlaceChange}
         />
       </div>
       <div>
@@ -80,7 +101,7 @@ const Form = () => {
           type="text"
           id="days"
           name="days"
-          onChange={(e) => setdays(e.target.value)}
+          onChange={handleDaysChange}
         />
       </div>
       <div>
@@ -89,7 +110,7 @@ const Form = () => {
           type="text"
           id="price"
           name="price"
-          onChange={(e) => setprice(e.target.value)}
+          onChange={handlePriceChange}
         />
       </div>
       <div>
@@ -97,7 +118,7 @@ const Form = () => {
         <textarea
           id="description"
           name="description"
-          onChange={(e) => setdescription(e.target.value)}
+          onChange={handleDescriptionChange}
  
         ></textarea>
       </div>
@@ -108,7 +129,7 @@ const Form = () => {
           id="image"
           name="image"
           accept="image/*"
-          onChange={(e) => setimage(e.target.value)}
+          onChange={handleImageChange}
         />
       </div>
       <button type="submit">Submit</button>

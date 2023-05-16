@@ -19,13 +19,12 @@ const Login = () => {
   const router = useRouter();
   useEffect(() => {
     if (user !== null) {
-      router.push("/user");
+      router.push("/createnewpackage");
     }
   }, [user]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       setLoading(true);
       const { data } = await axios.post(`/api/login`, {
