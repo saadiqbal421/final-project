@@ -20,23 +20,7 @@ const userSchema = new Schema(
       min: 6,
       max: 64,
     },
-    picture: {
-      type: String,
-      default: "/avatar.png",
-    },
-    role: {
-      type: [String],
-      default: ["Subscriber"],
-      enum: ["Subscriber", "Instructor", "Admin"],
-    },
-    stripe_account_id: "",
-    stripe_seller: {},
-    stripeSession: {},
-    passwordResetCode: {
-      data: String,
-      default: "",
-    },
-    courses:[{type: ObjectId, ref: "course"}],
+    
     isVerified: {
       type: Boolean,
       default: false,
