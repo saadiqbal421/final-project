@@ -105,6 +105,7 @@ const Form = () => {
           type="text"
           id="place"
           name="place"
+       
           onChange={handlePlaceChange}
         />
       </div>
